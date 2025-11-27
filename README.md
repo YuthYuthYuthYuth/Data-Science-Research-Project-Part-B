@@ -1,65 +1,182 @@
 # Data-Science-Research-Project-Part-B
-I Will try and comment as much as I can regarding what I have done for the Codes for my research project A. To make it easy to read and follow, I will outline it with numbers in numerically order!
+I Will try and comment as much as I can regarding what I have done for the Codes for my research project. To make it easy to read and follow, I will outline it with numbers in numerically order!
 
-1) What this project does
-This repository provides a completely replicable R pipeline to examine if the narrator's tone in Jules Verne's Around the World in 80 Days fluctuates with location. We acquire the public-domain text from Project Gutenberg, normalise and de-paratext the novel, eliminate dialogue using quote-aware filters to preserve the narrator's voice, segment the narrative into 19 geographic locations, tokenize, evaluate tokens with three sentiment lexicons (AFINN, Bing, NRC) employing minimal contextual rules (negation/intensifiers/downtoners), summarise by location with bootstrap confidence intervals and an LOESS smooth, and produce the figures and tables utilised in the paper.
 
-2) Quick start
-Open the project in RStudio (recommended).
+# Sentiment Analysis of Narrative Tone Throughout Different Geographic Locations in *Around the World in 80 Days*
 
-Run scripts in numeric order from 00_...R through 14_...R.
-Each script writes its results to data/processed and/or outputs/*, so you can resume from any point.
+This repository contains all code and outputs for my Research Project B (Master of Data Science). The project analyses how the narrator’s tone in Jules Verne’s *Around the World in 80 Days* changes as the story moves across different geographic locations. Everything is written in R and runs as a reproducible, ordered pipeline from raw text to final report figures and tables.
 
-Outputs will appear in:
+---
 
-outputs/figures/ (PNG figures for the paper)
+## Project Overview
 
-outputs/tables/ (CSV and LaTeX table snippets)
+The workflow performs the following:
 
-data/processed/ (.rds intermediates used by later steps)
+- Loads and cleans the raw novel text.
+- Strips boilerplate and Project Gutenberg artefacts.
+- Removes dialogue with robust quote/dash filters.
+- Normalises chapter structure and text segmentation.
+- Maps each paragraph or segment to a geographic location (“stops”).
+- Tokenises and lemmatises using tidytext/tokenizers.
+- Loads multiple sentiment lexicons (AFINN, Bing, NRC, SenticNet).
+- Applies negation and intensity rules.
+- Computes sentiment scores by location.
+- Produces plot diagnostics, journey curves, lexicon comparisons, and geographic maps.
+- Generates final figures and tables for use in the written report.
+- Includes optional modelling, partial correlations, and lexicon coverage diagnostics.
 
-Paths are relative via here::here(); you can run from the project root regardless of OS.
+All paths use the `here` package for reproducibility.
 
-3) Software & packages
-R (≥ 4.2 recommended)
+---
 
-CRAN packages: tidyverse, here, readtext or readr, stringr, tidytext, textdata, tokenizers, dplyr, purrr, ggplot2, scales, forcats, broom, modelr, cowplot, ggtext
+## Folder Structure
 
-For the route map: sf, rnaturalearth, rnaturalearthdata, geosphere (or ggplot2::map_data fallback)
+├── data/
+│ ├── raw/ # Raw text and any lookup files
+│ ├── external
+│ └── processed/ # Output .rds/.csv files generated during the pipeline
+│
+├── outputs/
+│ ├── figs/ # Final PNG/JPEG visualisations
+│ ├── meta
+│ └── tables/ # Exported CSV/LaTeX tables
+│
+├── scripts/ # Main R pipeline (00–20)
+│
+└── README.md
 
-4) Repository layout
-/data
-  /raw           <- original inputs (downloaded Gutenberg text, etc.)
-  /processed     <- intermediate .rds objects (token lists, scores, summaries)
-  
-/outputs
-  /figures       <- final PNGs used in the paper
-  /tables        <- final CSVs and LaTeX table snippets
 
-/scripts (if you keep them here) or project root
-  00_setup.R
-  01_download_text.R
-  02_normalise_paratext.R
-  03_quote_filters.R
-  04_segment_stops_and_route_map.R
-  05_tokenise.R
-  06_join_lexicons.R
-  07_context_rules.R
-  08_aggregate_by_stop.R
-  09_bootstrap_and_loess.R
-  10_fig_journey_curve.R
-  11_fig_bars_with_CIs.R
-  12_fig_lexicon_facets.R
-  13_fig_lexicon_overlay.R
-  14_tables.R
+---
 
-  5) Script-by-script guide (00–14)
-00_setup.R
+## How to Run the Project
 
-Installs/loads packages, sets global options, seeds resampling for reproducibility.
+1. Clone the repository:
 
-Creates data/raw, data/processed, outputs/figures, outputs/tables if missing.
+   ```bash
+   git clone https://github.com/YuthYuthYuthYuth/Data-Science-Research-Project-Part-B.git
+   cd Data-Science-Research-Project-Part-B
+2. Open the project folder in RStudio.
+3. Run the scripts in numeric order from 00_packages.R through 20_senticnet_examples.R.
+4. Outputs will be created automatically in:
+   - data/processed/
+   - outputs/figures/
+   - outputs/tables/
+If you need only certain plots/tables, you can run scripts from the relevant point as long as required intermediate files already exist.
 
-01_download_text.R
+## Script-by-Script Guide
 
-Downloads Around the World in 80 Days from Project Gutenberg to data/raw/.
+All scripts are inside scripts/.
+
+00_packages.R
+
+Loads/installs packages, sets global options, ensures the folder structure exists.
+
+01_load_text.R
+
+Loads the raw novel text into memory (from data/raw/).
+
+02_strip_boiler_segment.R
+
+Removes Gutenberg boilerplate, licensing text, headers/footers, and other unwanted metadata.
+
+03_normalise_text.R
+
+Normalises text structure, fixes spacing, corrects irregularities, prepares clean paragraph/segment units.
+
+04_dialogue_variants.R
+
+Applies multiple dialogue filters (quotes, em-dash dialogue markers, constructed variants) to extract only narrator text.
+
+05_location_map.R
+
+Defines the geographic lookup table and maps text segments to story “stops”.
+
+06_tokenise_lemmatise.R
+
+Tokenises narrator text into words and performs lemmatisation.
+
+07_lexicons.R
+
+Loads sentiment lexicons (AFINN, Bing, NRC, SenticNet if applicable) and prepares them for scoring.
+
+08_negation_intensity.R
+
+Implements contextual sentiment modifications such as:
+
+Negation handling
+
+Intensifiers
+
+Down-toners
+
+09_scoring.R
+
+Combines tokens + lexicons + context rules to compute sentiment scores at token, paragraph, and stop levels.
+
+10_diagnostics.R
+
+Generates diagnostic outputs, sanity checks, sample excerpts, and intermediate summaries.
+
+11_plot_journey.R
+
+Creates the main story “journey curve” — sentiment across the novel’s geographic route.
+
+11b_plot_lexicon_compare.R
+
+Compares sentiment across lexicons (AFINN vs Bing vs NRC vs SenticNet), including overlays and facets.
+
+12_geo_map.R
+
+Plots the world map with the novel’s travel route and sentiment by location.
+
+12B_geo_map.R
+
+Additional or alternative geographic visualisation (e.g., per-stop markers or sentiment heat mapping).
+
+13_report_tables.R
+
+Creates summary tables used directly in the written report (exports CSV/LaTeX).
+
+14_plots_export.R
+
+Collects and saves all major plots in final form into outputs/figures/.
+
+14_tables.R
+
+Exports final table versions for report inclusion.
+
+15_plot_intensity_proxy.R
+
+Creates plots showing sentiment intensity proxies, scaled scores, or alternative sentiment visualisations.
+
+16_modelling.R
+
+Optional modelling (e.g., linear models, smoothed fits, exploratory regression on predictors).
+
+17_partial_correlations.R
+
+Computes partial correlations between sentiment, intensity, lexicon variants, and other variables.
+
+18_prepare_senticnet.R
+
+Prepares SenticNet lexicon data for use in scoring (formatting, joining, normalisation).
+
+19_lexicon_coverage.R
+
+Generates diagnostics showing lexicon coverage — proportion of tokens each lexicon can score.
+
+20_senticnet_examples.R
+
+Produces illustrative examples of SenticNet-based sentiment scoring for inclusion in the report/appendix.
+
+## Reproducibility
+
+The project:
+- Uses an ordered script pipeline (00 → 20).
+- Stores intermediate files to avoid re-running early stages unnecessarily.
+- Uses the here package for stable paths.
+- Produces deterministic outputs given identical inputs.
+- Anyone can reproduce the full analysis by running the scripts in order.
+
+For issues or questions, please use the GitHub Issues tab. Thank you :)
+
