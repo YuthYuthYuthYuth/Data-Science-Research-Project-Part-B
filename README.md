@@ -1,4 +1,4 @@
-# Data-Science-Research-Project-Part-A
+# Data-Science-Research-Project-Part-B
 I Will try and comment as much as I can regarding what I have done for the Codes for my research project A. To make it easy to read and follow, I will outline it with numbers in numerically order!
 
 1) What this project does
