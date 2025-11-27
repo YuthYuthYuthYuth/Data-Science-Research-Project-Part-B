@@ -31,19 +31,21 @@ All paths use the `here` package for reproducibility.
 
 ## Folder Structure
 
+project-root/
+│
 ├── data/
 │ ├── raw/ # Raw text and any lookup files
-│ ├── external
+│ ├── external/ # (If used) externally sourced datasets
 │ └── processed/ # Output .rds/.csv files generated during the pipeline
 │
 ├── outputs/
-│ ├── figs/ # Final PNG/JPEG visualisations
-│ ├── meta
+│ ├── figures/ # Final PNG/JPEG visualisations
 │ └── tables/ # Exported CSV/LaTeX tables
 │
-├── scripts/ # Main R pipeline (00–20)
+├── meta/ # Metadata, logs, notes (if used)
 │
-└── README.md
+├── scripts/ # Main R pipeline scripts (00–20)
+│
 
 
 ---
