@@ -1,0 +1,2 @@
+n_stops,mean_coverage,median_coverage,min_coverage,max_coverage,min_stop_valence,max_stop_valence,r_afinn_bing,r_afinn_nrc,r_bing_nrc
+19,0.0765642623048882,0.07845744680851063,0.05936352509179926,0.08990536277602523,-0.19756756756756758,0.201900826446281,0.7552595622661598,NA,NA
