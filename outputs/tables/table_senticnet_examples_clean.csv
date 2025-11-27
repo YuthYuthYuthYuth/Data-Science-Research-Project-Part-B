@@ -1,0 +1,21 @@
+Word,n tokens,Mean score,Min score,Max score,Polarity
+fogg,496,-1,-1,-1,negative
+with,458,1,1,1,positive
+passepartout,369,-1,-1,-1,negative
+fix,209,1,1,1,positive
+replied,89,1,1,1,positive
+what,88,-1,-1,-1,negative
+twenty,78,1,1,1,positive
+master,70,1,1,1,positive
+passed,70,1,1,1,positive
+without,70,-1,-1,-1,negative
+found,59,1,1,1,positive
+left,58,1,1,1,positive
+sir,58,1,1,1,positive
+through,56,-1,-1,-1,negative
+great,55,1,1,1,positive
+long,55,1,1,1,positive
+thought,55,1,1,1,positive
+still,53,1,1,1,positive
+half,50,1,1,1,positive
+might,49,1,1,1,positive

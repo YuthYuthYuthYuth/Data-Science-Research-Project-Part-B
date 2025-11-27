@@ -1,0 +1,4 @@
+Lexicon,Tokens (total),Types (total),Scored tokens,Scored types,Token coverage,Type coverage
+SenticNet,51074,6341,15582,4221,0.305,0.666
+Bing,51074,6341,2775,991,0.054,0.156
+AFINN,51074,6341,2578,687,0.050,0.108

@@ -1,0 +1,3 @@
+Comparison,Correlation,p-value,Statistic,n
+sentiment ~ region | plot_proxy,-0.163,0.533,-0.639,18
+sentiment ~ plot_proxy | region,-0.67,0.003,-3.495,18

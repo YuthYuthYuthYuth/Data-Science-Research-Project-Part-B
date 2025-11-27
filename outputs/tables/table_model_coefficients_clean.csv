@@ -1,0 +1,7 @@
+Term,Estimate,Std. Error,2.5%,97.5%,p-value
+Intercept,1.046,0.147,0.724,1.367,<0.001
+Region: Europe,0.005,0.041,-0.085,0.096,0.897
+Region: Middle East,-0.242,0.069,-0.391,-0.092,0.004
+Region: North America,0.009,0.044,-0.088,0.105,0.847
+Region: South Asia,-0.018,0.044,-0.115,0.079,0.699
+plot_proxy,-8.827,1.292,-11.642,-6.012,<0.001
