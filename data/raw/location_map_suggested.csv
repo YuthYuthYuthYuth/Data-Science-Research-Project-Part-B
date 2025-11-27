@@ -1,0 +1,38 @@
+chapter,location,order,loc_hits
+1,London,1,9
+2,London,1,3
+3,London,1,4
+4,London,1,3
+5,London,1,3
+6,Suez/Aden,2,13
+7,London,3,4
+8,London,3,8
+9,Bombay,4,11
+10,Bombay,4,12
+11,Bombay,4,3
+12,London,5,1
+13,Bombay,6,1
+14,Calcutta,7,5
+15,Bombay,8,7
+16,Hong Kong,9,16
+17,Hong Kong,9,5
+18,Hong Kong,9,8
+19,Hong Kong,9,8
+20,Yokohama/Japan,10,13
+21,Yokohama/Japan,10,6
+22,Yokohama/Japan,10,13
+23,San Francisco,11,2
+24,Yokohama/Japan,12,9
+25,San Francisco,13,4
+26,San Francisco,13,5
+27,Transit,14,0
+28,Atlantic/Liverpool,15,3
+29,San Francisco,16,2
+30,San Francisco,16,2
+31,New York,17,5
+32,Atlantic/Liverpool,18,14
+33,Atlantic/Liverpool,18,31
+34,London,19,7
+35,London,19,3
+36,London,19,2
+37,London,19,5
