@@ -31,22 +31,21 @@ All paths use the `here` package for reproducibility.
 
 ## Folder Structure
 
-project-root/
-│
-├── data/
-│ ├── raw/ # Raw text and any lookup files
-│ ├── external/ # (If used) externally sourced datasets
-│ └── processed/ # Output .rds/.csv files generated during the pipeline
-│
-├── outputs/
-│ ├── figures/ # Final PNG/JPEG visualisations
-│ └── tables/ # Exported CSV/LaTeX tables
-│
-├── meta/ # Metadata, logs, notes (if used)
-│
-├── scripts/ # Main R pipeline scripts (00–20)
-│
 
+**data/**
+- `raw/` – original text and lookup files  
+- `processed/` – intermediate and cleaned datasets  
+- `external/` – (optional) any external datasets  
+
+**outputs/**
+- `figures/` – final PNG/JPEG figures for the report  
+- `tables/` – exported CSV or LaTeX tables  
+
+**meta/**  
+- metadata, logs, or notes (if used)
+
+**scripts/**
+- all R scripts for the full pipeline (`00_packages.R` to `20_senticnet_examples.R`)
 
 ---
 
